@@ -10,19 +10,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t python-app .'
+                bat '%DOCKER% build -t python-app '
             }
         }
 
         stage('Run Tests Inside Docker') {
             steps {
-                bat 'docker run --rm python-app python -m pytest'
+                bat '%DOCKER% run python-app pytest'
             }
         }
 
         stage('Run Application Inside Docker') {
             steps {
-                bat 'docker run --rm python-app'
+                bat '%DOCKER% run --rm python-app'
             }
         }
     }
