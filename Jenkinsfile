@@ -2,21 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+
+        stage('Check Python') {
             steps {
-                git branch: 'main', url: 'https://github.com/ranjikarthi/jenkins.git'
+                bat 'python --version'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'python -m pip install --upgrade pip'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'pytest'
+                bat 'python -m pytest'
             }
         }
 
