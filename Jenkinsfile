@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat '%DOCKER% build -t python-app '
+                bat '%DOCKER% build -t python-app .'
             }
         }
 
