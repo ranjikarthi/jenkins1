@@ -22,7 +22,7 @@ pipeline {
 
         stage('Run Application Inside Docker') {
             steps {
-                bat '%DOCKER% run python-app'
+                bat '%DOCKER% run -it python-app'
             }
         }
     }
